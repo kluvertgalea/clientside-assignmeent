@@ -1,5 +1,18 @@
 <div class="container">
   <div class="text-center">
     <h1>Drones list</h1>
+    <h5>Listing {{count}} drone(s)</h5>
+    <div *ngIf="drones != null">
+      <div class="mt-2">
+        <span class="float-start m-3 p-2"  *ngFor="let drone of drones">
+          <app-drone-listing [drone]="drone"></app-drone-listing>
+        </span>
+      </div>
+    </div>
+
+    <div class="text-center" *ngIf="drones == null">
+      <h3>No drones :-(</h3>
+    </div>
+
   </div>
 </div>
