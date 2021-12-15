@@ -1,6 +1,82 @@
 <div class="container">
   <div class="text-center">
-    <h1>Welcome to the add drone page!</h1>
-    <p>Placeholder p tag...</p>
+    <h1>Add Drone</h1>
+    <p>Fill in the form below to register a new drone...</p>
+
+
+    <form class="text-start mt-3">
+      <h4>Drone details</h4>
+      <p>Fields below relate to the actual drone...</p>
+
+      <div class="input-group">
+        <div class="mb-3 col-4">
+          <label for="inputSerialNumber" class="form-label">Serial Number</label>
+          <input type="text" class="form-control" id="inputSerialNumber" placeholder="S672993">
+        </div>
+
+        <div class="mb-3 col-4 mx-5">
+          <label for="inputModelNumber" class="form-label">Model Number</label>
+          <input type="text" class="form-control" id="inputModelNumber" placeholder="M54123">
+        </div>
+      </div>
+
+      <div class="input-group">
+        <div class="mb-3 col-4">
+          <label for="inputBrand" class="form-label">Brand</label>
+          <input type="text" class="form-control" id="inputBrand" placeholder="Giga">
+        </div>
+
+        <div class="mb-3 col-4 mx-5">
+          <label for="inputModel" class="form-label">Model</label>
+          <input type="text" class="form-control" id="inputModel" placeholder="Model 1">
+        </div>
+      </div>
+
+      <hr>
+
+      <h4>User details</h4>
+      <p>Fields below relate to the owner of the drone...</p>
+
+      <div class="input-group">
+        <div class="mb-3 col-2">
+          <label for="inputOwnerId" class="form-label">Id Card Number</label>
+          <input type="text" class="form-control" id="inputOwnerId" placeholder="1234567M">
+        </div>
+
+        <div class="mb-3 col-3 mx-5">
+          <label for="inputFirstName" class="form-label">First Name</label>
+          <input type="text" class="form-control" id="inputFirstName" placeholder="John">
+        </div>
+
+        <div class="mb-3 col-3">
+          <label for="inputLastName" class="form-label">Last Name</label>
+          <input type="text" class="form-control" id="inputLastName" placeholder="Smith">
+        </div>
+
+      </div>
+
+      <h5>Contact Details</h5>
+      <div class="input-group">
+        <div class="mb-3 col-2">
+          <label for="inputCountryCode" class="form-label">Country Code</label>
+          <input type="text" class="form-control" id="inputCountryCode" placeholder="356">
+        </div>
+
+        <div class="mb-3 col-3 mx-5">
+          <label for="inputContactNumber" class="form-label">Contact Number</label>
+          <input type="text" class="form-control" id="inputContactNumber" placeholder="66778899">
+        </div>
+
+        <div class="mb-3 col-3">
+          <label for="inputEmail" class="form-label">Email</label>
+          <input type="email" class="form-control" id="inputEmail" placeholder="johnsmith@example.com">
+        </div>
+
+
+      </div>
+
+      <button type="submit" class="btn btn-dark mt-2">Register drone</button>
+
+    </form>
   </div>
 </div>
