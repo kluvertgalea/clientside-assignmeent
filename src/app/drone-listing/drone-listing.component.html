@@ -3,7 +3,7 @@
     <h5 class="card-title">Serial Number - {{drone.serialNumber}}</h5>
     <h6 class="card-subtitle mb-2">Brand - {{drone.brand}}</h6>
     <p class="card-text">Registered by {{drone.ownerFirstName}} {{drone.ownerLastName}}</p>
-    <button class="btn btn-primary">View</button>
+    <button class="btn btn-primary" [routerLink]="['/drones-list-view', drone.id]">View</button>
     <button class="btn btn-warning m-1">Edit</button>
     <button class="btn btn-danger m-1">Delete</button>
   </div>

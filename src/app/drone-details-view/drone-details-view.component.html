@@ -1,0 +1,61 @@
+<div class="container">
+  <h2 class="text-center">Drone details</h2>
+
+  <div class="card">
+    <div class="card-header">
+        Drone ID: {{drone.id}}
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col md-2">Serial Number</div>
+            <div class="col md-10">{{drone.serialNumber}}</div>
+        </div>
+        <div class="row">
+            <div class="col md-2">Model Number</div>
+            <div class="col md-10">{{drone.modelNumber}}</div>
+        </div>
+        <div class="row">
+            <div class="col md-2">Brand</div>
+            <div class="col md-10">{{drone.brand}}</div>
+        </div>
+        <div class="row">
+            <div class="col md-2">Model</div>
+            <div class="col md-10">{{drone.model}}</div>
+        </div>
+
+        <hr>
+        <h6>Drone Owner Details</h6>
+        <div class="row">
+            <div class="col md-2">ID</div>
+            <div class="col md-10">{{drone.ownerIdNumber }}</div>
+        </div>
+        <div class="row">
+            <div class="col md-2">First Name</div>
+            <div class="col md-10">{{drone.ownerFirstName}}</div>
+        </div>
+        <div class="row">
+          <div class="col md-2">Last Name</div>
+          <div class="col md-10">{{drone.ownerLastName}}</div>
+      </div>
+        <div class="row">
+            <div class="col md-2">Country Code</div>
+            <div class="col md-10">{{drone.ownerContactNumberCountryCode}}</div>
+        </div>
+        <div class="row">
+          <div class="col md-2">Contact Number</div>
+          <div class="col md-10">{{drone.ownerContactNumber}}</div>
+      </div>
+      <div class="row">
+        <div class="col md-2">Email</div>
+        <div class="col md-10">{{drone.ownerEmail}}</div>
+    </div>
+    </div>
+</div>
+
+
+  <div class="mt-3">
+    <button type="button" class="btn btn-dark" (click)="onBackButtonClick()">
+        Back to drones list view
+    </button>
+  </div>
+</div>
