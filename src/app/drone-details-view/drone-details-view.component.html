@@ -1,7 +1,7 @@
 <div class="container">
   <h2 class="text-center">Drone details</h2>
 
-  <div class="card">
+  <div class="card" *ngIf="drone != null">
     <div class="card-header">
         Drone ID: {{drone.id}}
     </div>

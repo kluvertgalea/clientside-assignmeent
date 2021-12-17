@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Query } from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 
 import { map, Observable } from 'rxjs';
@@ -12,6 +12,7 @@ export class DroneService {
 
   dronesCollection: AngularFirestoreCollection<Drone>;
   drones: Observable<any[]>;
+  droneDoc : AngularFirestoreDocument<Drone>;
 
   constructor(private afs: AngularFirestore) {
     // this.drones = this.afs.collection('drones').snapshotChanges();
@@ -34,4 +35,12 @@ export class DroneService {
      return this.drones;
    }
 
+   deleteDrone(drone: Drone){
+    this.droneDoc = this.afs.doc('drones/'+drone.id);
+    this.droneDoc.delete();
+   }
+
+   addDrone(drone: Drone){
+    this.dronesCollection.add(drone);
+   }
 }

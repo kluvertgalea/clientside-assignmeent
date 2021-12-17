@@ -22,7 +22,10 @@ export class DronesListViewComponent implements OnInit {
       this.count = this.drones.length;
     });
 
+  }
 
+  deleteDrone(event, drone){
+    this.droneService.deleteDrone(drone);
   }
 
 }

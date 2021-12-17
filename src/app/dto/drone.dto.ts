@@ -5,7 +5,7 @@ export class Drone {
   private _modelNumber: string;
   private _brand: string;
   private _model: string;
-  private _ownerIdNumber: number;
+  private _ownerIdNumber: string;
   private _ownerFirstName: string;
   private _ownerLastName: string;
   private _ownerContactNumberCountryCode: number;
@@ -18,7 +18,7 @@ export class Drone {
     modelNumber : string,
     brand : string,
     model : string,
-    ownerIdNumber : number,
+    ownerIdNumber : string,
     ownerFirstName : string,
     ownerLastName : string,
     ownerContactNumberCountryCode : number,
@@ -79,10 +79,10 @@ export class Drone {
   }
 
   //Owner Id Number
-  public get ownerIdNumber(): number {
+  public get ownerIdNumber(): string {
     return this._ownerIdNumber;
   }
-  public set ownerIdNumber(value: number) {
+  public set ownerIdNumber(value: string) {
     this._ownerIdNumber = value;
   }
 

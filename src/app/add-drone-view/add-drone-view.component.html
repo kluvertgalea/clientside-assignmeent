@@ -4,31 +4,65 @@
     <p>Fill in the form below to register a new drone...</p>
 
 
-    <form class="text-start mt-4">
+    <form class="text-start mt-4" novalidate [formGroup]="droneForm" (ngSubmit)="submitForm()">
       <h4>Drone details</h4>
       <p>Fields below relate to the actual drone...</p>
 
       <div class="input-group">
         <div class="mb-3 col-3">
           <label for="inputSerialNumber" class="form-label">Serial Number</label>
-          <input type="text" class="form-control" id="inputSerialNumber" placeholder="S672993">
+          <input type="text" formControlName="serialNumber" class="form-control" id="inputSerialNumber" placeholder="S672993">
+
+          <span class="help-block" *ngIf="(droneForm.get('serialNumber').touched || droneForm.get('serialNumber').dirty)
+             && droneForm.get('serialNumber').errors">
+          <span *ngIf="droneForm.get('serialNumber').errors['required']" style="color:red;">Field is required!</span>
+          </span>
+
         </div>
 
         <div class="mb-3 col-3 mx-5">
           <label for="inputModelNumber" class="form-label">Model Number</label>
-          <input type="text" class="form-control" id="inputModelNumber" placeholder="M54123">
+          <input type="text" formControlName="modelNumber" class="form-control" id="inputModelNumber" placeholder="M54123">
+
+
+          <span class="help-block" *ngIf="(droneForm.get('modelNumber').touched || droneForm.get('modelNumber').dirty)
+          && droneForm.get('modelNumber').errors">
+       <span *ngIf="droneForm.get('modelNumber').errors['required']" style="color:red;">Field is required!</span>
+       </span>
         </div>
+
       </div>
 
       <div class="input-group">
         <div class="mb-3 col-3">
           <label for="inputBrand" class="form-label">Brand</label>
-          <input type="text" class="form-control" id="inputBrand" placeholder="Giga">
+           <br>
+           <label for="inputBrand">Choose a brand:</label>
+
+           <select formControlName="brand" name="inputBrand" id="inputBrand">
+             <option value="DJI">DJI</option>
+             <option value="Yuneec">Yuneec</option>
+             <option value="UVIfy">UVIfy</option>
+             <option value="Hubsan">Hubsan</option>
+             <option value="Parrot">Parrot</option>
+             <option value="Freefly">Freefly</option>
+           </select>
+
+           <span class="help-block" *ngIf="(droneForm.get('brand').touched || droneForm.get('brand').dirty)
+           && droneForm.get('brand').errors">
+          <span *ngIf="droneForm.get('brand').errors['required']" style="color:red;">Field is required!</span>
+          </span>
         </div>
 
         <div class="mb-3 col-3 mx-5">
           <label for="inputModel" class="form-label">Model</label>
-          <input type="text" class="form-control" id="inputModel" placeholder="Model 1">
+          <input type="text" formControlName="model" class="form-control" id="inputModel" placeholder="Model 1">
+
+
+          <span class="help-block" *ngIf="(droneForm.get('model').touched || droneForm.get('model').dirty)
+          && droneForm.get('model').errors">
+         <span *ngIf="droneForm.get('model').errors['required']" style="color:red;">Field is required!</span>
+         </span>
         </div>
       </div>
 
@@ -40,17 +74,33 @@
       <div class="input-group">
         <div class="mb-3 col-2">
           <label for="inputOwnerId" class="form-label">Id Card Number</label>
-          <input type="text" class="form-control" id="inputOwnerId" placeholder="1234567M">
+          <input type="text" formControlName="ownerIdNumber" class="form-control" id="inputOwnerId" placeholder="1234567M">
+
+          <span class="help-block" *ngIf="(droneForm.get('ownerIdNumber').touched || droneForm.get('ownerIdNumber').dirty)
+          && droneForm.get('ownerIdNumber').errors">
+         <span *ngIf="droneForm.get('ownerIdNumber').errors['required']" style="color:red;">Field is required!</span>
+         </span>
         </div>
 
         <div class="mb-3 col-3 mx-5">
           <label for="inputFirstName" class="form-label">First Name</label>
-          <input type="text" class="form-control" id="inputFirstName" placeholder="John">
+          <input type="text" formControlName="ownerFirstName" class="form-control" id="inputFirstName" placeholder="John">
+
+          <span class="help-block" *ngIf="(droneForm.get('ownerFirstName').touched || droneForm.get('ownerFirstName').dirty)
+          && droneForm.get('ownerFirstName').errors">
+         <span *ngIf="droneForm.get('ownerFirstName').errors['required']" style="color:red;">Field is required!</span>
+         </span>
         </div>
 
         <div class="mb-3 col-3">
           <label for="inputLastName" class="form-label">Last Name</label>
-          <input type="text" class="form-control" id="inputLastName" placeholder="Smith">
+          <input type="text" formControlName="ownerLastName" class="form-control" id="inputLastName" placeholder="Smith">
+
+
+          <span class="help-block" *ngIf="(droneForm.get('ownerLastName').touched || droneForm.get('ownerLastName').dirty)
+          && droneForm.get('ownerLastName').errors">
+         <span *ngIf="droneForm.get('ownerLastName').errors['required']" style="color:red;">Field is required!</span>
+         </span>
         </div>
 
       </div>
@@ -59,23 +109,40 @@
       <div class="input-group">
         <div class="mb-3 col-2">
           <label for="inputCountryCode" class="form-label">Country Code</label>
-          <input type="text" class="form-control" id="inputCountryCode" placeholder="356">
+          <input type="number" formControlName="ownerContactNumberCountryCode" class="form-control" id="inputCountryCode" placeholder="356">
+
+
+          <span class="help-block" *ngIf="(droneForm.get('ownerContactNumberCountryCode').touched || droneForm.get('ownerContactNumberCountryCode').dirty)
+          && droneForm.get('ownerContactNumberCountryCode').errors">
+         <span *ngIf="droneForm.get('ownerContactNumberCountryCode').errors['required']" style="color:red;">Field is required!</span>
+         </span>
         </div>
 
         <div class="mb-3 col-3 mx-5">
           <label for="inputContactNumber" class="form-label">Contact Number</label>
-          <input type="text" class="form-control" id="inputContactNumber" placeholder="66778899">
+          <input type="number" formControlName="ownerContactNumber" class="form-control" id="inputContactNumber" placeholder="66778899">
+
+
+          <span class="help-block" *ngIf="(droneForm.get('ownerContactNumber').touched || droneForm.get('ownerContactNumber').dirty)
+          && droneForm.get('ownerContactNumber').errors">
+         <span *ngIf="droneForm.get('ownerContactNumber').errors['required']" style="color:red;">Field is required!</span>
+         </span>
         </div>
 
         <div class="mb-3 col-3">
           <label for="inputEmail" class="form-label">Email</label>
-          <input type="email" class="form-control" id="inputEmail" placeholder="johnsmith@example.com">
-        </div>
+          <input type="email" formControlName="ownerEmail" class="form-control" id="inputEmail" placeholder="johnsmith@example.com">
 
+
+          <span class="help-block" *ngIf="(droneForm.get('ownerEmail').touched || droneForm.get('ownerEmail').dirty)
+          && droneForm.get('ownerEmail').errors">
+         <span *ngIf="droneForm.get('ownerEmail').errors['required']" style="color:red;">Field is required!</span>
+         </span>
+        </div>
 
       </div>
 
-      <button type="submit" class="btn btn-dark mt-2">Register drone</button>
+      <button type="submit" [disabled]="!droneForm.valid" class="btn btn-dark mt-2">Register drone</button>
 
     </form>
   </div>
