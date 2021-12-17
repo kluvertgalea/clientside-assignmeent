@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { DronesListViewComponent } from './drones-list-view/drones-list-view.component';
 import { AddDroneViewComponent } from './add-drone-view/add-drone-view.component';
-import { DroneListingComponent } from './drone-listing/drone-listing.component';
 import { DroneDetailsViewComponent } from './drone-details-view/drone-details-view.component';
 
 @NgModule({
@@ -15,7 +14,6 @@ import { DroneDetailsViewComponent } from './drone-details-view/drone-details-vi
     HomeComponent,
     DronesListViewComponent,
     AddDroneViewComponent,
-    DroneListingComponent,
     DroneDetailsViewComponent,
   ],
   imports: [
