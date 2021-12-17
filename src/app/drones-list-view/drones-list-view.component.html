@@ -1,9 +1,9 @@
 <div class="container">
   <div class="text-center">
     <h1>Drones list</h1>
-    <h5>Listing {{count}} drone(s)</h5>
+    <h5 *ngIf="drones.length > 0">Listing {{count}} drone(s)</h5>
 
-    <table class="table" *ngIf="drones != null">
+    <table class="table" *ngIf="drones.length > 0">
       <thead>
         <tr>
           <th>Serial Number</th>
@@ -28,12 +28,8 @@
       </tbody>
     </table>
 
-
-
-
-
-    <div class="text-center" *ngIf="drones == null">
-      <h3>No drones :-(</h3>
+    <div class="text-center" *ngIf="drones.length <= 0">
+      <h5>No drones :-(</h5>
     </div>
 
   </div>

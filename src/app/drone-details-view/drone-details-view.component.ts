@@ -14,7 +14,7 @@ export class DroneDetailsViewComponent implements OnInit {
   constructor(private route:ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    this.drone = new Drone(1, "khjfkawd", "kwjdhakjwhdw", "yes", "dasdaw", 232, "John", "Smith", 24, 543,"yes@email.com");
+    // this.drone = new Drone(1, "khjfkawd", "kwjdhakjwhdw", "yes", "dasdaw", 232, "John", "Smith", 24, 543,"yes@email.com");
   }
 
   onBackButtonClick(){

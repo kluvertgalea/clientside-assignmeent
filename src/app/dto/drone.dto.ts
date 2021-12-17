@@ -1,6 +1,6 @@
 export class Drone {
 
-  private _id: number;
+  private _id: string;
   private _serialNumber: string;
   private _modelNumber: string;
   private _brand: string;
@@ -13,7 +13,7 @@ export class Drone {
   private _ownerEmail: string;
 
   constructor(
-    id : number,
+    id : string,
     serialNumber : string,
     modelNumber : string,
     brand : string,
@@ -39,10 +39,10 @@ export class Drone {
   }
 
   //Id
-  public get id(): number {
+  public get id(): string {
     return this._id;
   }
-  public set id(value: number) {
+  public set id(value: string) {
     this._id = value;
   }
 

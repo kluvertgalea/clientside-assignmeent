@@ -8,6 +8,13 @@ import { DronesListViewComponent } from './drones-list-view/drones-list-view.com
 import { AddDroneViewComponent } from './add-drone-view/add-drone-view.component';
 import { DroneDetailsViewComponent } from './drone-details-view/drone-details-view.component';
 
+//Firebase related
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+
+import { DroneService } from './Services/drone.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,9 +25,11 @@ import { DroneDetailsViewComponent } from './drone-details-view/drone-details-vi
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase, 'css-homeassignment'),
+    AngularFirestoreModule
   ],
-  providers: [],
+  providers: [DroneService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
