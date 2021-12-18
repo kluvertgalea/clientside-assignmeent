@@ -32,15 +32,23 @@ export class DroneService {
    }
 
    getDrones(){
-     return this.drones;
+      return this.drones;
    }
 
    deleteDrone(drone: Drone){
-    this.droneDoc = this.afs.doc('drones/'+drone.id);
-    this.droneDoc.delete();
+      this.droneDoc = null;
+      this.droneDoc = this.afs.doc('drones/'+drone.id);
+      this.droneDoc.delete();
    }
 
    addDrone(drone: Drone){
-    this.dronesCollection.add(drone);
+      this.droneDoc = null;
+      this.dronesCollection.add(drone);
+   }
+
+   updateDrone(drone:Drone){
+      this.droneDoc = null;
+      this.droneDoc = this.afs.doc('drones/'+drone.id);
+      this.droneDoc.update(drone);
    }
 }

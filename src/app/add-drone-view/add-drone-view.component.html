@@ -115,6 +115,9 @@
           <span class="help-block" *ngIf="(droneForm.get('ownerContactNumberCountryCode').touched || droneForm.get('ownerContactNumberCountryCode').dirty)
           && droneForm.get('ownerContactNumberCountryCode').errors">
          <span *ngIf="droneForm.get('ownerContactNumberCountryCode').errors['required']" style="color:red;">Field is required!</span>
+         <span *ngIf="droneForm.get('ownerContactNumberCountryCode').errors['min']" style="color:red;">Country Code must be between 2 & 3 characters long!</span>
+         <span *ngIf="droneForm.get('ownerContactNumberCountryCode').errors['max']" style="color:red;">Country Code must be between 2 & 3 characters long!</span>
+
          </span>
         </div>
 
@@ -126,6 +129,9 @@
           <span class="help-block" *ngIf="(droneForm.get('ownerContactNumber').touched || droneForm.get('ownerContactNumber').dirty)
           && droneForm.get('ownerContactNumber').errors">
          <span *ngIf="droneForm.get('ownerContactNumber').errors['required']" style="color:red;">Field is required!</span>
+         <span *ngIf="droneForm.get('ownerContactNumber').errors['min']" style="color:red;">Contact Number must be 8 characters long!</span>
+         <span *ngIf="droneForm.get('ownerContactNumber').errors['max']" style="color:red;">Contact Number must be 8 characters long!</span>
+
          </span>
         </div>
 
@@ -137,6 +143,7 @@
           <span class="help-block" *ngIf="(droneForm.get('ownerEmail').touched || droneForm.get('ownerEmail').dirty)
           && droneForm.get('ownerEmail').errors">
          <span *ngIf="droneForm.get('ownerEmail').errors['required']" style="color:red;">Field is required!</span>
+         <span *ngIf="droneForm.get('ownerEmail').errors['email']" style="color:red;">Email must be standard email format!</span>
          </span>
         </div>
 

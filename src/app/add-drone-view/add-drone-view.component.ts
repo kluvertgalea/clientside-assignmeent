@@ -25,9 +25,9 @@ export class AddDroneViewComponent implements OnInit {
       ownerIdNumber: ['', [Validators.required]],
       ownerFirstName: ['', [Validators.required]],
       ownerLastName: ['', [Validators.required]],
-      ownerContactNumberCountryCode: ['', [Validators.required]],
-      ownerContactNumber: ['', [Validators.required]],
-      ownerEmail: ['', [Validators.required]],
+      ownerContactNumberCountryCode: ['', [Validators.required, Validators.min(11), Validators.max(999)]],
+      ownerContactNumber: ['', [Validators.required, Validators.min(10000000), Validators.max(99999999)]],
+      ownerEmail: ['', [Validators.required, Validators.email]],
     });
   }
 
@@ -35,6 +35,7 @@ export class AddDroneViewComponent implements OnInit {
     if(this.droneForm.valid){
       this.drone = this.droneForm.value;
       this.droneService.addDrone(this.drone);
+      alert("Product successfully added!");
     }
   }
 
