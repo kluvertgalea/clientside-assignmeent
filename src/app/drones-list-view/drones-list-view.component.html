@@ -22,7 +22,7 @@
           <td>{{drone.ownerFirstName}}</td>
           <td>{{drone.ownerLastName}}</td>
           <td> <button class="btn btn-primary" [routerLink]="['/drones-list-view', drone.id]">View</button></td>
-          <td> <button class="btn btn-warning m-1">Edit</button></td>
+          <td> <button class="btn btn-warning m-1" [routerLink]="['/update-drone-view', drone.id]">Edit</button></td>
           <td><button class="btn btn-danger m-1" (click)="deleteDrone($event, drone)">Delete</button></td>
         </tr>
       </tbody>
