@@ -1,19 +1,39 @@
 <div class="container">
     <div class="text-center">
         <h2>Sign in</h2>
+        <p>Fill in the form to sign in, you will be redirected to the home page upon successful login</p>
 
-        <form class="text-start mt-4">
+        <form class="text-start mt-4" novalidate [formGroup]="loginForm">
             <div class="input-group">
                 <div class="mb-3 col-3">
                     <label for="inputAccountEmail" class="form-label">Email</label>
-                    <input type="text" class="form-control" name="email" id="inputAccountEmail" placeholder="user@domain.com" #email>
+                    <input type="email" class="form-control"  formControlName="formEmail" name="email" id="inputAccountEmail" placeholder="user@domain.com" #email>
+
+                    <span class="help-block" *ngIf="(loginForm.get('formEmail').touched || loginForm.get('formEmail').dirty)
+                        && loginForm.get('formEmail').errors">
+
+                    <span *ngIf="loginForm.get('formEmail').errors['required']" style="color:red;">Field is required!</span>
+                    <span *ngIf="loginForm.get('formEmail').errors['email']" style="color:red;">Email must be standard email format!</span>
+
+                    </span>
+
+                    <br>
 
                     <label for="inputAccountPassword" class="form-label">Password</label>
-                    <input type="password" class="form-control" name="password" id="inputAccountPassword" placeholder="********" #password>
+                    <input type="password" class="form-control" formControlName="formPassword" name="password" id="inputAccountPassword" placeholder="********" #password>
+
+                    <span class="help-block" *ngIf="(loginForm.get('formPassword').touched || loginForm.get('formPassword').dirty)
+                        && loginForm.get('formPassword').errors">
+
+                    <span *ngIf="loginForm.get('formPassword').errors['required']" style="color:red;">Field is required!</span>
+
+                    </span>
+
+                    <span *ngIf="invalidCreds == true" style="color:red;">Invalid Credentials!</span>
                 </div>
             </div>
 
-            <button type="button" class="btn btn-dark mt-2" (click)="handleSignIn(email.value, password.value)">Sign in</button>
+            <button type="button" [disabled]="!loginForm.valid" class="btn btn-dark mt-2" (click)="handleSignIn(email.value, password.value)">Sign in</button>
         </form>
     </div>
 </div>
