@@ -16,6 +16,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { DroneService } from './Services/drone.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateDroneViewComponent } from './update-drone-view/update-drone-view.component';
+import { IncorrectDroneIdViewComponent } from './incorrect-drone-id-view/incorrect-drone-id-view.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { UpdateDroneViewComponent } from './update-drone-view/update-drone-view.
     AddDroneViewComponent,
     DroneDetailsViewComponent,
     UpdateDroneViewComponent,
+    IncorrectDroneIdViewComponent,
   ],
   imports: [
     BrowserModule,

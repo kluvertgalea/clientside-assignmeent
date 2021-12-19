@@ -13,6 +13,7 @@ export class DroneDetailsViewComponent implements OnInit {
 
   drone:Drone;
 
+
   constructor(private route:ActivatedRoute, private router: Router, private droneService : DroneService) { }
 
   ngOnInit(): void {
@@ -20,9 +21,10 @@ export class DroneDetailsViewComponent implements OnInit {
 
     this.droneService.getDrones().subscribe(drone => {
       this.drone = drone[drone.indexOf(drone.find(d => d.id == id))];
-      console.log(this.drone);
+      if(this.drone == null || this.drone == undefined){
+        this.router.navigate(['/incorrect-drone-id-view']);
+      }
     });
-
 
 
   }

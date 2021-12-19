@@ -20,7 +20,10 @@ export class UpdateDroneViewComponent implements OnInit {
 
     this.droneService.getDrones().subscribe(drone => {
       this.drone = drone[drone.indexOf(drone.find(d => d.id == id))];
-      // console.log(this.drone);
+      if(this.drone == null || this.drone == undefined){
+        this.router.navigate(['/incorrect-drone-id-view']);
+      }
+
     });
 
 

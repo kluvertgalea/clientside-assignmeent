@@ -5,7 +5,7 @@
     <p>You are currently editing drone with id : <span style="color: green;">{{drone.id}}</span></p>
   </div>
 
-  <form class="text-start mt-4" novalidate [formGroup]="droneForm" (ngSubmit)="submitForm()" *ngIf="drone != null">
+  <form class="text-start mt-4" novalidate [formGroup]="droneForm" (ngSubmit)="submitForm()" *ngIf="drone != null && drone != undefined">
     <h4>Drone details</h4>
     <p>Fields below relate to the actual drone...</p>
 
