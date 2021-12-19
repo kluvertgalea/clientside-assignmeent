@@ -17,6 +17,9 @@ import { DroneService } from './Services/drone.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateDroneViewComponent } from './update-drone-view/update-drone-view.component';
 import { IncorrectDroneIdViewComponent } from './incorrect-drone-id-view/incorrect-drone-id-view.component';
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+import { FirebaseService } from './Services/firebase.service';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,8 @@ import { IncorrectDroneIdViewComponent } from './incorrect-drone-id-view/incorre
     DroneDetailsViewComponent,
     UpdateDroneViewComponent,
     IncorrectDroneIdViewComponent,
+    LoginComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,7 @@ import { IncorrectDroneIdViewComponent } from './incorrect-drone-id-view/incorre
     AngularFirestoreModule,
     ReactiveFormsModule
   ],
-  providers: [DroneService],
+  providers: [DroneService, FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

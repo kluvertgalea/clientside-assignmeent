@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="text-center">
+        <h2>Sign in</h2>
+
+        <form class="text-start mt-4">
+            <div class="input-group">
+                <div class="mb-3 col-3">
+                    <label for="inputAccountEmail" class="form-label">Email</label>
+                    <input type="text" class="form-control" name="email" id="inputAccountEmail" placeholder="user@domain.com" #email>
+
+                    <label for="inputAccountPassword" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" id="inputAccountPassword" placeholder="********" #password>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-dark mt-2" (click)="handleSignIn(email.value, password.value)">Sign in</button>
+        </form>
+    </div>
+</div>
