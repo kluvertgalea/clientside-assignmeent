@@ -2,7 +2,6 @@ export class User {
     private _email: string;
     
     private _role: string;
-   
 
     constructor(email: string, role: string){
         this._email = email;
@@ -23,4 +22,5 @@ export class User {
         this._role = value;
     }
     
+   
 }

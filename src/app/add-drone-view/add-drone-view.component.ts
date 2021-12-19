@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Drone } from '../dto/drone.dto';
+import { Permissions } from '../dto/permissions.dto';
 import { DroneService } from '../Services/drone.service';
+import { FirebaseService } from '../Services/firebase.service';
 
 
 @Component({
@@ -15,11 +17,21 @@ export class AddDroneViewComponent implements OnInit {
   drone: Drone;
   droneForm :FormGroup;
 
-  constructor(private formBuilder : FormBuilder, private router: Router,private droneService: DroneService) { }
+  permissions : Permissions = new Permissions(false, false, false, false);
+
+  constructor(private formBuilder : FormBuilder, private firebaseService: FirebaseService,private router: Router,private droneService: DroneService) { }
 
   ngOnInit(): void {
     if(localStorage.getItem('user') == null){
       this.router.navigate(['login']);
+    }
+
+    let content = JSON.parse(localStorage.getItem('user'));
+    this.permissions = this.firebaseService.checkPermissionsForRole(content.email);
+
+    if(!this.permissions.hasAddAccess){
+      alert('Uh oh! It seems like you do not have permissions to access this page..');
+      this.router.navigate(['home']);
     }
 
     this.droneForm = this.formBuilder.group({

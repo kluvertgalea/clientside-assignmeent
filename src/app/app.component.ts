@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from './dto/user.dto';
 import { FirebaseService } from './Services/firebase.service';
+import { Permissions } from './dto/permissions.dto';
 
 @Component({
   selector: 'app-root',
@@ -10,21 +10,27 @@ import { FirebaseService } from './Services/firebase.service';
 })
 export class AppComponent implements OnInit{
   pageTitle = 'Droneland';
-  @Input() isSignedIn = false;
+  isSignedIn = false;
 
   userEmail = '';
+  permissions: Permissions = new Permissions(false, false, false, false);
 
   constructor(private firebaseService: FirebaseService, private router: Router) {
 
   }
 
   ngOnInit(): void {
+
+    let content = JSON.parse(localStorage.getItem('user'));
+    this.permissions = this.firebaseService.checkPermissionsForRole(content.email);
    
     if(localStorage.getItem('user') != null){
       this.isSignedIn = true;
       let content = JSON.parse(localStorage.getItem('user'));
-      
       this.userEmail = content.email;
+
+      // console.log(localStorage.getItem('user'));
+      // console.log();
 
     }
   }

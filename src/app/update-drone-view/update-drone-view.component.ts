@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Drone } from '../dto/drone.dto';
 import { DroneService } from '../Services/drone.service';
+import { Permissions } from '../dto/permissions.dto';
+import { FirebaseService } from '../Services/firebase.service';
 
 @Component({
   selector: 'app-update-drone-view',
@@ -13,9 +15,20 @@ export class UpdateDroneViewComponent implements OnInit {
 
   drone : Drone;
   droneForm : FormGroup;
-  constructor(private route:ActivatedRoute, private router: Router, private formBuilder : FormBuilder,private droneService: DroneService) { }
+  permissions: Permissions = new Permissions(false, false, false ,false);
+
+  constructor(private route:ActivatedRoute, private router: Router, private formBuilder : FormBuilder,private droneService: DroneService, private firebaseService: FirebaseService) { }
 
   ngOnInit(): void {
+
+    let content = JSON.parse(localStorage.getItem('user'));
+    this.permissions = this.firebaseService.checkPermissionsForRole(content.email);
+
+    if(!this.permissions.hasEditAccess){
+      alert('Uh oh! It seems like you do not have permissions to access this page..');
+      this.router.navigate(['home']);
+    }
+
      let id = this.route.snapshot.paramMap.get('id');
 
     this.droneService.getDrones().subscribe(drone => {

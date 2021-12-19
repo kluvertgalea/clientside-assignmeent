@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Permissions } from '../dto/permissions.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +15,7 @@ export class FirebaseService {
       this.isLoggedIn = true;
       localStorage.setItem('user', JSON.stringify(res.user));
       location.reload();
-   
     });
-
   }
 
   logout(){
@@ -27,6 +26,23 @@ export class FirebaseService {
 
   getLoggedIn(){
     return this.isLoggedIn;
+  }
+
+  checkPermissionsForRole(email: string){
+    
+    switch(email){
+      case 'test.sysadmin@test.com':
+        console.log('test.sysadmin@test.com');
+        return new Permissions(true, true, true, true);
+      case 'test.manager@test.com':
+        console.log('test.manager@test.com');
+        return new Permissions( true, true, true, false);
+      case 'test.clerk@test.com':
+        console.log('test.clerk@test.com');
+        return new Permissions(true, false, false, false);
+    }
+
+    return null;
   }
 }
 
