@@ -17,6 +17,9 @@ export class DroneDetailsViewComponent implements OnInit {
   constructor(private route:ActivatedRoute, private router: Router, private droneService : DroneService) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem('user') == null){
+      this.router.navigate(['login']);
+    }
     let id = this.route.snapshot.paramMap.get('id');
 
     this.droneService.getDrones().subscribe(drone => {

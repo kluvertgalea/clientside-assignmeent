@@ -18,6 +18,10 @@ export class AddDroneViewComponent implements OnInit {
   constructor(private formBuilder : FormBuilder, private router: Router,private droneService: DroneService) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem('user') == null){
+      this.router.navigate(['login']);
+    }
+
     this.droneForm = this.formBuilder.group({
       serialNumber: ['', [Validators.required]],
       modelNumber: ['', [Validators.required]],

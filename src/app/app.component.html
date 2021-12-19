@@ -8,15 +8,15 @@
     <li class="nav-item">
       <a class="nav-link"  routerLink="/drones-list-view" routerLinkActive="active" >View Drones</a>
   </li>
-  <li class="nav-item" *ngIf="isSignedIn">
-    <a class="nav-link"  routerLink="/logout">Sign Out</a>
-  </li>
-  <li class="nav-item" *ngIf="!isSignedIn">
-    <a class="nav-link"  routerLink="/login">Sign In</a>
-  </li>
-  <li class="nav-item" *ngIf="isSignedIn">
-    <a class="nav-link">Logged in as : {{userEmail}}</a>
-  </li>
+    <li class="nav-item" *ngIf="isSignedIn">
+      <a class="nav-link"  routerLink="/login" (click)="handleLogout()">Sign Out</a>
+    </li>
+    <li class="nav-item" *ngIf="!isSignedIn">
+      <a class="nav-link"  routerLink="/login">Sign In</a>
+    </li>
+    <li class="nav-item" *ngIf="isSignedIn && userEmail != undefined && userEmail != null">
+      <a class="nav-link">Logged in as : {{userEmail}}</a>
+    </li>
   </ul>
 </nav>
 

@@ -18,7 +18,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateDroneViewComponent } from './update-drone-view/update-drone-view.component';
 import { IncorrectDroneIdViewComponent } from './incorrect-drone-id-view/incorrect-drone-id-view.component';
 import { LoginComponent } from './login/login.component';
-import { LogoutComponent } from './logout/logout.component';
 import { FirebaseService } from './Services/firebase.service';
 
 @NgModule({
@@ -30,8 +29,7 @@ import { FirebaseService } from './Services/firebase.service';
     DroneDetailsViewComponent,
     UpdateDroneViewComponent,
     IncorrectDroneIdViewComponent,
-    LoginComponent,
-    LogoutComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ import { FirebaseService } from '../Services/firebase.service';
 })
 export class LoginComponent implements OnInit {
 
+  
   constructor(private firebaseService : FirebaseService, private router: Router) { }
 
   ngOnInit(): void {
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   handleSignIn(email: string, password: string){
     this.firebaseService.signin(email, password);
-    this.router.navigate(['/home']);
+    this.router.navigate(['home']);
   }
 
 }

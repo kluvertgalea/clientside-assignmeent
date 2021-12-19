@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from './dto/user.dto';
 import { FirebaseService } from './Services/firebase.service';
 
 @Component({
@@ -8,34 +10,33 @@ import { FirebaseService } from './Services/firebase.service';
 })
 export class AppComponent implements OnInit{
   pageTitle = 'Droneland';
-  userEmail = '';
-  isSignedIn = false;
+  @Input() isSignedIn = false;
 
-  constructor(private firebaseService: FirebaseService) {
+  userEmail = '';
+
+  constructor(private firebaseService: FirebaseService, private router: Router) {
 
   }
 
   ngOnInit(): void {
-    if(localStorage.getItem('user') !== null){
+   
+    if(localStorage.getItem('user') != null){
       this.isSignedIn = true;
-      console.log(localStorage.getItem('user'));
-    }
+      let content = JSON.parse(localStorage.getItem('user'));
+      
+      this.userEmail = content.email;
 
-    console.log("Is signed in:" + this.isSignedIn);
-  }
-
-
-  async onSignIn(email: string, password: string){
-    await this.firebaseService.signin(email, password);
-
-    if(localStorage.getItem('user') !== null){
-      this.isSignedIn = true;
-      console.log("Is signed in: " + this.isSignedIn);
     }
   }
 
   handleLogout(){
     this.isSignedIn = false;
-    this.firebaseService.logout();
+
+    if(localStorage.getItem('user') !== null){
+      this.firebaseService.logout();
+    } else {
+      this.router.navigate(['login']);
+    }
   }
+
 }
