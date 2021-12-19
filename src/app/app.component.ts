@@ -40,6 +40,7 @@ export class AppComponent implements OnInit{
 
     if(localStorage.getItem('user') !== null){
       this.firebaseService.logout();
+      this.permissions = this.firebaseService.checkPermissionsForRole('')
     } else {
       this.router.navigate(['login']);
     }

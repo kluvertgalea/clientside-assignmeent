@@ -42,7 +42,7 @@ export class FirebaseService {
         return new Permissions(true, false, false, false);
     }
 
-    return null;
+    return new Permissions(false, false, false, false);
   }
 }
 

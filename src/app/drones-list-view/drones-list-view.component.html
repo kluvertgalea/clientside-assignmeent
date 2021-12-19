@@ -10,9 +10,9 @@
           <th>Brand</th>
           <th>Owner's Name</th>
           <th>Owner's Surname</th>
-          <th></th>
-          <th></th>
-          <th></th>
+          <th ></th>
+          <th *ngIf="permissions.hasEditAccess"></th>
+          <th *ngIf="permissions.hasDeleteAccess"></th>
         </tr>
       </thead>
       <tbody>
@@ -22,8 +22,8 @@
           <td>{{drone.ownerFirstName}}</td>
           <td>{{drone.ownerLastName}}</td>
           <td> <button class="btn btn-primary" [disabled]="!permissions.hasViewAccess" [routerLink]="['/drones-list-view', drone.id]">View</button></td>
-          <td> <button class="btn btn-warning m-1" [disabled]="!permissions.hasEditAccess" [routerLink]="['/update-drone-view', drone.id]">Edit</button></td>
-          <td><button class="btn btn-danger m-1" [disabled]="!permissions.hasDeleteAccess" (click)="deleteDrone($event, drone)">Delete</button></td>
+          <td *ngIf="permissions.hasEditAccess"> <button class="btn btn-warning m-1" [disabled]="!permissions.hasEditAccess" [routerLink]="['/update-drone-view', drone.id]">Edit</button></td>
+          <td *ngIf="permissions.hasDeleteAccess"> <button class="btn btn-danger m-1" [disabled]="!permissions.hasDeleteAccess" (click)="deleteDrone($event, drone)">Delete</button></td>
         </tr>
       </tbody>
     </table>
