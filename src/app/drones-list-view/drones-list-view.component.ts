@@ -25,7 +25,9 @@ export class DronesListViewComponent implements OnInit {
   }
 
   deleteDrone(event, drone){
-    this.droneService.deleteDrone(drone);
-  }
+    if(confirm('Are you sure you want to delete the selected drone?')){
+      this.droneService.deleteDrone(drone);
 
+    }
+  }
 }

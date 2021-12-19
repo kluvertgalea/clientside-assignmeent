@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Drone } from '../dto/drone.dto';
 import { DroneService } from '../Services/drone.service';
 
@@ -14,7 +15,7 @@ export class AddDroneViewComponent implements OnInit {
   drone: Drone;
   droneForm :FormGroup;
 
-  constructor(private formBuilder : FormBuilder, private droneService: DroneService) { }
+  constructor(private formBuilder : FormBuilder, private router: Router,private droneService: DroneService) { }
 
   ngOnInit(): void {
     this.droneForm = this.formBuilder.group({
@@ -35,7 +36,9 @@ export class AddDroneViewComponent implements OnInit {
     if(this.droneForm.valid){
       this.drone = this.droneForm.value;
       this.droneService.addDrone(this.drone);
-      alert("Product successfully added!");
+      if(confirm("Drone successfully added, do you want to be redirected to the drones list page?")){
+        this.router.navigate(['/drones-list-view']);
+      }
     }
   }
 
