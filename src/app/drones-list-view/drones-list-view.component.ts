@@ -6,6 +6,13 @@ import { Permissions } from '../dto/permissions.dto';
 import { DroneService } from '../Services/drone.service';
 import { FirebaseService } from '../Services/firebase.service';
 
+//Pdf export
+import * as jspdf from 'jspdf';
+import html2canvas from 'html2canvas';
+
+//Excel export
+import * as xlsx from 'xlsx';
+
 @Component({
   selector: 'app-drones-list-view',
   templateUrl: './drones-list-view.component.html',
@@ -45,5 +52,29 @@ export class DronesListViewComponent implements OnInit {
         this.router.navigate(['home']);
     }
    
+  }
+
+  exportToPdf(event){
+    // console.log("pdf gang");
+    var element = document.getElementById('dataId');
+    html2canvas(element).then((canvas) => {
+      var imgData = canvas.toDataURL('image/png');
+      var doc = new jspdf.jsPDF();
+      var imgHeight = canvas.height * 208 / canvas.width;
+      doc.addImage(imgData, 0, 0, 208, imgHeight);
+      doc.save("drone_listings");
+    })
+  }
+
+  exportToExcel(){
+    // console.log("excel gang");
+    const table = document.getElementById('dronesTable');
+    const ws: xlsx.WorkSheet = xlsx.utils.table_to_sheet(table);
+
+    const wb: xlsx.WorkBook = xlsx.utils.book_new();
+    xlsx.utils.book_append_sheet(wb, ws, 'Drones List');
+
+    xlsx.writeFile(wb, 'drone_listings.xlsx');
+
   }
 }

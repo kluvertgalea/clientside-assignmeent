@@ -1,16 +1,17 @@
 <div class="container">
   <div class="text-center">
+    <div id="dataId">
     <h1>Drones list</h1>
     <h5 *ngIf="drones.length > 0">Listing {{count}} drone(s)</h5>
 
-    <table class="table" *ngIf="drones.length > 0">
+    <table class="table" id="dronesTable" *ngIf="drones.length > 0">
       <thead>
         <tr>
           <th>Serial Number</th>
           <th>Brand</th>
           <th>Owner's Name</th>
           <th>Owner's Surname</th>
-          <th ></th>
+          <th></th>
           <th *ngIf="permissions.hasEditAccess"></th>
           <th *ngIf="permissions.hasDeleteAccess"></th>
         </tr>
@@ -31,6 +32,11 @@
     <div class="text-center" *ngIf="drones.length <= 0">
       <h5>No drones :-(</h5>
     </div>
-
+  </div>
+    <hr>
+    <h2>Export Table data:</h2>
+    <p>Click one of the buttons below to export to the format you wish!</p>
+    <button class="btn btn-danger m-3" (click)="exportToPdf($event)">pdf</button>
+    <button class="btn btn-success m-3" id="btnExcel" (click)="exportToExcel()">excel</button>
   </div>
 </div>
