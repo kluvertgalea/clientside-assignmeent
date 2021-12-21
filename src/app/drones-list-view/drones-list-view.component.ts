@@ -55,7 +55,6 @@ export class DronesListViewComponent implements OnInit {
   }
 
   exportToPdf(event){
-    // console.log("pdf gang");
     var element = document.getElementById('dataId');
     html2canvas(element).then((canvas) => {
       var imgData = canvas.toDataURL('image/png');
@@ -67,7 +66,6 @@ export class DronesListViewComponent implements OnInit {
   }
 
   exportToExcel(){
-    // console.log("excel gang");
     const table = document.getElementById('dronesTable');
     const ws: xlsx.WorkSheet = xlsx.utils.table_to_sheet(table);
 

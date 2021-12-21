@@ -12,27 +12,22 @@ export class AppComponent implements OnInit{
   pageTitle = 'Droneland';
   isSignedIn = false;
 
-  userEmail = '';
+  userEmail = 'default';
   permissions: Permissions = new Permissions(false, false, false, false);
 
   constructor(private firebaseService: FirebaseService, private router: Router) {
-
+   
   }
 
   ngOnInit(): void {
 
-    let content = JSON.parse(localStorage.getItem('user'));
-    this.permissions = this.firebaseService.checkPermissionsForRole(content.email);
-   
     if(localStorage.getItem('user') != null){
       this.isSignedIn = true;
       let content = JSON.parse(localStorage.getItem('user'));
-      this.userEmail = content.email;
-
-      // console.log(localStorage.getItem('user'));
-      // console.log();
-
+      this.userEmail = content.email
+      this.permissions = this.firebaseService.checkPermissionsForRole(this.userEmail);
     }
+      
   }
 
   handleLogout(){

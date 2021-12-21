@@ -15,12 +15,9 @@ export class DroneService {
   droneDoc : AngularFirestoreDocument<Drone>;
 
   constructor(private afs: AngularFirestore) {
-    // this.drones = this.afs.collection('drones').snapshotChanges();
-
 
     this.dronesCollection = this.afs.collection('drones');
 
-    // this.users = this.afs.collection('users').valueChanges();
     this.drones = this.dronesCollection.snapshotChanges().pipe(map(changes => {
       return changes.map(a => {
         const data = a.payload.doc.data() as Drone;

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
 import { Permissions } from '../dto/permissions.dto';
 
 @Injectable({
@@ -7,13 +8,14 @@ import { Permissions } from '../dto/permissions.dto';
 })
 export class FirebaseService {
 
-  isLoggedIn = false;
-  constructor(private firebaseAuth: AngularFireAuth) { }
+ isLoggedIn = false;
+  constructor(private firebaseAuth: AngularFireAuth , private router: Router) { }
 
   async signin(email: string, password: string){
     await this.firebaseAuth.signInWithEmailAndPassword(email, password).then(res => {
+      localStorage.setItem('user', JSON.stringify(res.user));    
       this.isLoggedIn = true;
-      localStorage.setItem('user', JSON.stringify(res.user));
+      this.router.navigate(['']);
       location.reload();
     });
   }
@@ -32,13 +34,10 @@ export class FirebaseService {
     
     switch(email){
       case 'test.sysadmin@test.com':
-        console.log('test.sysadmin@test.com');
         return new Permissions(true, true, true, true);
       case 'test.manager@test.com':
-        console.log('test.manager@test.com');
         return new Permissions( true, true, true, false);
       case 'test.clerk@test.com':
-        console.log('test.clerk@test.com');
         return new Permissions(true, false, false, false);
     }
 
